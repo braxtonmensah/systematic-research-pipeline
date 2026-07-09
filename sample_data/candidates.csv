@@ -1,13 +1,241 @@
-candidate_id,formula_family,data_theme,sharpe,fitness,turnover,drawdown,margin_bps,self_correlation,novelty,active_similarity,family_saturation,live_status
-F001,quality_revision,fundamental,1.42,1.21,0.19,0.036,6.8,0.41,0.74,0.28,0.32,ok
-F002,quality_revision,fundamental,1.08,0.88,0.28,0.049,4.9,0.67,0.51,0.43,0.55,watch
-F003,volume_reversal,price_volume,1.31,1.02,0.34,0.057,5.4,0.58,0.62,0.39,0.49,ok
-F004,volume_reversal,price_volume,0.82,0.63,0.41,0.074,3.2,0.74,0.46,0.61,0.70,blocked
-F005,event_pressure,news_event,1.18,1.00,0.22,0.044,5.8,0.35,0.81,0.24,0.27,ok
-F006,event_pressure,news_event,0.96,0.72,0.37,0.061,4.1,0.52,0.66,0.35,0.44,watch
-F007,accrual_quality,fundamental,1.36,1.17,0.17,0.039,7.2,0.48,0.69,0.31,0.36,ok
-F008,accrual_quality,fundamental,0.71,0.55,0.45,0.082,2.9,0.63,0.58,0.57,0.58,blocked
-F009,options_pressure,derivatives,1.24,1.04,0.25,0.052,5.6,0.44,0.77,0.29,0.30,ok
-F010,options_pressure,derivatives,1.01,0.86,0.31,0.055,4.7,0.59,0.60,0.42,0.47,watch
-F011,capital_efficiency,fundamental,1.51,1.29,0.21,0.041,7.5,0.39,0.73,0.26,0.34,ok
-F012,capital_efficiency,fundamental,0.91,0.70,0.38,0.069,3.8,0.71,0.49,0.64,0.68,blocked
+candidate_id,formula_family,data_theme,sharpe,fitness,turnover,drawdown,margin_bps,self_correlation,novelty,active_similarity,family_saturation,live_status,oos_decay,coverage,complexity,operator_count,validation_window,notes
+C0001,earnings_response,news_event,0.716,0.822,0.389,0.0311,2.83,0.264,0.303,0.221,0.227,blocked,0.574,0.831,0.501,6,recent_family_holdout,blocked until risk or crowding improves
+C0002,event_pressure,news_event,1.162,0.976,0.383,0.0588,5.26,0.384,0.312,0.263,0.422,ok,0.221,0.877,0.849,8,recent_family_holdout,promising if novelty survives family holdout
+C0003,crowded_momentum,price_volume,0.941,0.843,0.290,0.0457,4.13,0.633,0.558,0.546,0.772,watch,0.062,0.834,0.478,7,recent_family_holdout,needs refinement before promotion
+C0004,options_pressure,derivatives,1.002,1.003,0.426,0.0696,4.09,0.479,0.496,0.181,0.215,ok,0.083,0.885,0.670,8,recent_family_holdout,promising if novelty survives family holdout
+C0005,asset_light_reinvestment,fundamental,0.530,0.630,0.531,0.0571,2.47,0.407,0.583,0.241,0.436,blocked,0.185,0.751,0.545,5,recent_family_holdout,blocked until risk or crowding improves
+C0006,asset_light_reinvestment,fundamental,1.337,0.991,0.569,0.0289,6.67,0.125,0.626,0.306,0.089,ok,0.190,0.882,0.719,6,recent_family_holdout,promising if novelty survives family holdout
+C0007,volume_reversal,price_volume,1.161,0.940,0.640,0.0535,4.57,0.397,0.228,0.417,0.616,ok,0.199,0.835,0.624,5,recent_family_holdout,promising if novelty survives family holdout
+C0008,analyst_revision,estimates,1.513,1.255,0.342,0.0722,6.23,0.315,0.930,0.305,0.155,ok,0.276,0.973,0.902,8,recent_family_holdout,promising if novelty survives family holdout
+C0009,analyst_revision,estimates,0.725,0.725,0.435,0.0510,3.71,0.288,0.498,0.187,0.369,watch,0.440,0.969,0.577,8,recent_family_holdout,needs refinement before promotion
+C0010,liquidity_need,price_volume,0.631,0.658,0.486,0.0350,3.18,0.372,0.665,0.458,0.560,blocked,0.061,0.921,0.568,8,recent_family_holdout,blocked until risk or crowding improves
+C0011,crowded_momentum,price_volume,0.492,0.525,0.537,0.0269,2.97,0.607,0.323,0.769,0.940,blocked,0.434,0.701,0.451,6,recent_family_holdout,blocked until risk or crowding improves
+C0012,short_interest_stress,short_interest,0.861,0.912,0.305,0.0611,4.41,0.432,0.218,0.427,0.678,ok,0.077,0.894,0.330,5,recent_family_holdout,promising if novelty survives family holdout
+C0013,quality_revision,fundamental,0.993,0.969,0.312,0.0394,5.11,0.596,0.514,0.567,0.599,watch,0.104,0.964,0.645,6,recent_family_holdout,needs refinement before promotion
+C0014,volume_reversal,price_volume,0.761,0.671,0.583,0.0686,3.81,0.406,0.391,0.349,0.652,watch,0.687,0.869,0.774,7,recent_family_holdout,needs refinement before promotion
+C0015,capital_efficiency,fundamental,0.792,0.861,0.200,0.0642,4.14,0.481,0.577,0.255,0.277,ok,0.046,0.841,0.395,5,recent_family_holdout,promising if novelty survives family holdout
+C0016,crowded_momentum,price_volume,0.452,0.736,0.290,0.0277,3.08,0.721,0.172,0.776,0.940,blocked,0.093,0.913,0.272,4,recent_family_holdout,blocked until risk or crowding improves
+C0017,accrual_quality,fundamental,1.232,1.014,0.314,0.0480,6.32,0.268,0.412,0.182,0.129,ok,0.069,0.776,0.608,6,recent_family_holdout,promising if novelty survives family holdout
+C0018,accrual_quality,fundamental,0.897,0.753,0.473,0.0718,4.54,0.432,0.415,0.476,0.524,ok,0.195,0.748,0.583,8,recent_family_holdout,promising if novelty survives family holdout
+C0019,crowded_momentum,price_volume,1.084,1.065,0.388,0.0599,3.96,0.572,0.060,0.616,0.903,watch,0.193,0.854,0.750,9,recent_family_holdout,needs refinement before promotion
+C0020,crowded_momentum,price_volume,0.549,0.676,0.661,0.0480,3.12,0.449,0.583,0.527,0.853,blocked,0.087,0.777,0.412,6,recent_family_holdout,blocked until risk or crowding improves
+C0021,short_interest_stress,short_interest,1.009,0.930,0.366,0.0457,4.34,0.205,0.661,0.410,0.350,ok,0.161,0.892,0.687,9,recent_family_holdout,promising if novelty survives family holdout
+C0022,volume_reversal,price_volume,0.946,0.889,0.668,0.0515,4.14,0.239,0.756,0.225,0.098,ok,0.188,0.703,0.811,11,recent_family_holdout,promising if novelty survives family holdout
+C0023,options_pressure,derivatives,0.664,0.798,0.474,0.0580,2.59,0.472,0.060,0.581,0.775,blocked,0.319,0.816,0.935,7,recent_family_holdout,blocked until risk or crowding improves
+C0024,capital_efficiency,fundamental,0.999,0.922,0.411,0.0445,5.21,0.524,0.540,0.367,0.642,ok,0.096,0.798,0.143,4,recent_family_holdout,promising if novelty survives family holdout
+C0025,analyst_revision,estimates,0.844,0.803,0.312,0.0738,4.70,0.569,0.157,0.469,0.376,ok,0.101,0.821,0.354,5,recent_family_holdout,promising if novelty survives family holdout
+C0026,liquidity_need,price_volume,1.076,0.939,0.548,0.0617,4.84,0.417,0.081,0.448,0.416,ok,0.182,0.892,0.120,4,recent_family_holdout,promising if novelty survives family holdout
+C0027,event_pressure,news_event,0.790,0.841,0.191,0.0288,4.18,0.558,0.060,0.600,0.902,watch,0.037,0.883,0.407,5,recent_family_holdout,needs refinement before promotion
+C0028,event_pressure,news_event,0.448,0.580,0.478,0.0354,2.11,0.407,0.299,0.354,0.197,blocked,0.260,0.939,0.261,5,recent_family_holdout,blocked until risk or crowding improves
+C0029,event_pressure,news_event,0.858,0.906,0.126,0.0716,3.97,0.431,0.606,0.328,0.248,watch,0.546,0.908,0.228,6,recent_family_holdout,needs refinement before promotion
+C0030,crowded_momentum,price_volume,0.807,0.804,0.357,0.0299,4.15,0.639,0.304,0.682,0.876,watch,0.354,0.761,0.802,8,recent_family_holdout,needs refinement before promotion
+C0031,quality_revision,fundamental,0.993,1.054,0.557,0.0379,3.63,0.262,0.592,0.366,0.328,ok,0.364,0.748,0.444,6,recent_family_holdout,promising if novelty survives family holdout
+C0032,options_pressure,derivatives,0.885,0.925,0.298,0.0355,4.26,0.266,0.633,0.234,0.463,ok,0.300,0.718,0.741,8,recent_family_holdout,promising if novelty survives family holdout
+C0033,event_pressure,news_event,0.807,0.910,0.454,0.0327,3.57,0.320,0.242,0.583,0.496,watch,0.360,0.975,0.633,6,recent_family_holdout,needs refinement before promotion
+C0034,accrual_quality,fundamental,0.654,0.848,0.357,0.0373,2.65,0.561,0.310,0.509,0.705,blocked,0.083,0.713,0.646,9,recent_family_holdout,blocked until risk or crowding improves
+C0035,accrual_quality,fundamental,0.946,0.970,0.544,0.0493,4.09,0.322,0.141,0.445,0.347,watch,0.637,0.929,0.183,3,recent_family_holdout,needs refinement before promotion
+C0036,crowded_momentum,price_volume,0.775,0.713,0.458,0.0448,4.71,0.638,0.252,0.570,0.459,watch,0.111,0.941,0.841,11,recent_family_holdout,needs refinement before promotion
+C0037,accrual_quality,fundamental,0.934,0.840,0.418,0.0656,4.17,0.270,0.342,0.339,0.538,watch,0.526,0.711,0.566,6,recent_family_holdout,needs refinement before promotion
+C0038,analyst_revision,estimates,0.578,0.613,0.335,0.0585,3.60,0.461,0.804,0.473,0.457,ok,0.103,0.917,0.619,6,recent_family_holdout,promising if novelty survives family holdout
+C0039,crowded_momentum,price_volume,0.375,0.558,0.480,0.0629,1.98,0.640,0.614,0.401,0.477,blocked,0.374,0.895,0.513,5,recent_family_holdout,blocked until risk or crowding improves
+C0040,options_pressure,derivatives,1.327,1.087,0.269,0.0488,5.53,0.395,0.511,0.364,0.437,watch,0.672,0.682,0.636,7,recent_family_holdout,needs refinement before promotion
+C0041,event_pressure,news_event,0.890,0.960,0.271,0.0585,4.43,0.300,0.738,0.330,0.203,ok,0.329,0.843,0.223,5,recent_family_holdout,promising if novelty survives family holdout
+C0042,liquidity_need,price_volume,0.731,0.802,0.547,0.0495,4.42,0.641,0.106,0.727,0.624,watch,0.379,0.732,0.662,8,recent_family_holdout,needs refinement before promotion
+C0043,quality_revision,fundamental,0.794,0.948,0.574,0.0471,3.85,0.527,0.239,0.379,0.760,ok,0.059,0.969,0.120,4,recent_family_holdout,promising if novelty survives family holdout
+C0044,analyst_revision,estimates,0.433,0.622,0.228,0.0522,2.66,0.397,0.505,0.311,0.386,blocked,0.312,0.843,0.785,10,recent_family_holdout,blocked until risk or crowding improves
+C0045,accrual_quality,fundamental,0.490,0.701,0.560,0.0286,3.21,0.256,0.218,0.349,0.144,blocked,0.102,0.959,0.303,4,recent_family_holdout,blocked until risk or crowding improves
+C0046,quality_revision,fundamental,0.648,0.863,0.198,0.0264,3.98,0.675,0.130,0.448,0.685,watch,0.093,0.764,0.380,5,recent_family_holdout,needs refinement before promotion
+C0047,accrual_quality,fundamental,0.585,0.685,0.342,0.0732,2.67,0.407,0.609,0.444,0.372,blocked,0.630,0.888,0.538,8,recent_family_holdout,blocked until risk or crowding improves
+C0048,asset_light_reinvestment,fundamental,1.171,1.113,0.196,0.0482,5.15,0.299,0.571,0.285,0.350,ok,0.177,0.967,0.564,6,recent_family_holdout,promising if novelty survives family holdout
+C0049,liquidity_need,price_volume,0.867,0.841,0.412,0.0737,4.46,0.243,0.251,0.263,0.217,watch,0.422,0.743,0.373,7,recent_family_holdout,needs refinement before promotion
+C0050,earnings_response,news_event,0.915,0.928,0.261,0.0367,5.67,0.297,0.437,0.437,0.360,ok,0.180,0.916,0.539,7,recent_family_holdout,promising if novelty survives family holdout
+C0051,quality_revision,fundamental,0.976,0.899,0.571,0.0316,4.06,0.552,0.408,0.621,0.847,watch,0.275,0.840,0.514,7,recent_family_holdout,needs refinement before promotion
+C0052,options_pressure,derivatives,0.691,0.734,0.469,0.0753,3.98,0.469,0.490,0.669,0.448,blocked,0.178,0.677,0.530,8,recent_family_holdout,blocked until risk or crowding improves
+C0053,event_pressure,news_event,0.964,0.893,0.247,0.0319,4.51,0.208,0.546,0.345,0.131,watch,0.388,0.729,0.120,3,recent_family_holdout,needs refinement before promotion
+C0054,capital_efficiency,fundamental,1.782,1.228,0.425,0.0382,7.69,0.118,0.747,0.465,0.396,ok,0.227,0.841,0.611,7,recent_family_holdout,promising if novelty survives family holdout
+C0055,asset_light_reinvestment,fundamental,1.486,1.129,0.372,0.0344,6.95,0.418,0.775,0.363,0.241,ok,0.198,0.957,0.362,5,recent_family_holdout,promising if novelty survives family holdout
+C0056,options_pressure,derivatives,0.893,0.962,0.325,0.0337,4.40,0.582,0.469,0.468,0.477,ok,0.308,0.732,0.551,7,recent_family_holdout,promising if novelty survives family holdout
+C0057,event_pressure,news_event,0.476,0.397,0.502,0.0650,2.19,0.340,0.293,0.452,0.358,blocked,0.275,0.966,0.570,6,recent_family_holdout,blocked until risk or crowding improves
+C0058,short_interest_stress,short_interest,0.862,0.837,0.121,0.0379,6.35,0.234,0.508,0.302,0.080,ok,0.266,0.757,0.539,8,recent_family_holdout,promising if novelty survives family holdout
+C0059,liquidity_need,price_volume,0.731,0.674,0.550,0.0754,2.69,0.409,0.376,0.462,0.617,blocked,0.206,0.852,0.778,8,recent_family_holdout,blocked until risk or crowding improves
+C0060,earnings_response,news_event,0.866,0.904,0.275,0.0710,3.76,0.271,0.442,0.201,0.137,ok,0.136,0.761,0.444,6,recent_family_holdout,promising if novelty survives family holdout
+C0061,quality_revision,fundamental,1.301,1.186,0.197,0.0475,5.44,0.337,0.803,0.336,0.265,watch,0.408,0.717,0.269,5,recent_family_holdout,needs refinement before promotion
+C0062,quality_revision,fundamental,0.795,0.819,0.474,0.0612,3.22,0.607,0.154,0.622,0.735,blocked,0.427,0.722,0.630,8,recent_family_holdout,blocked until risk or crowding improves
+C0063,earnings_response,news_event,1.164,0.832,0.529,0.0653,4.72,0.339,0.758,0.400,0.290,ok,0.330,0.821,0.593,8,recent_family_holdout,promising if novelty survives family holdout
+C0064,event_pressure,news_event,0.943,0.970,0.152,0.0698,3.87,0.537,0.106,0.534,0.655,ok,0.308,0.885,0.449,5,recent_family_holdout,promising if novelty survives family holdout
+C0065,crowded_momentum,price_volume,1.168,1.149,0.355,0.0568,4.76,0.384,0.252,0.522,0.602,watch,0.628,0.712,0.730,9,recent_family_holdout,needs refinement before promotion
+C0066,quality_revision,fundamental,0.835,0.845,0.579,0.0337,4.18,0.366,0.553,0.348,0.190,ok,0.231,0.986,0.481,5,recent_family_holdout,promising if novelty survives family holdout
+C0067,liquidity_need,price_volume,0.811,1.013,0.237,0.0273,4.11,0.225,0.115,0.273,0.374,ok,0.159,0.754,0.516,6,recent_family_holdout,promising if novelty survives family holdout
+C0068,volume_reversal,price_volume,0.714,0.784,0.342,0.0404,4.26,0.349,0.734,0.256,0.085,ok,0.048,0.928,0.403,5,recent_family_holdout,promising if novelty survives family holdout
+C0069,crowded_momentum,price_volume,0.459,0.543,0.291,0.0439,3.47,0.436,0.542,0.567,0.733,blocked,0.165,0.763,0.844,7,recent_family_holdout,blocked until risk or crowding improves
+C0070,capital_efficiency,fundamental,1.498,1.303,0.205,0.0500,7.30,0.287,0.627,0.149,0.355,ok,0.079,0.874,0.699,7,recent_family_holdout,promising if novelty survives family holdout
+C0071,quality_revision,fundamental,1.048,1.084,0.152,0.0442,4.83,0.528,0.091,0.473,0.481,ok,0.229,0.987,0.193,3,recent_family_holdout,promising if novelty survives family holdout
+C0072,liquidity_need,price_volume,0.714,0.753,0.436,0.0260,3.95,0.353,0.388,0.278,0.256,ok,0.235,0.925,0.623,6,recent_family_holdout,promising if novelty survives family holdout
+C0073,options_pressure,derivatives,1.256,1.012,0.435,0.0454,5.76,0.277,0.608,0.506,0.412,blocked,0.304,0.648,0.594,7,recent_family_holdout,blocked until risk or crowding improves
+C0074,accrual_quality,fundamental,0.998,0.952,0.396,0.0577,5.27,0.475,0.282,0.427,0.419,watch,0.455,0.798,0.418,4,recent_family_holdout,needs refinement before promotion
+C0075,options_pressure,derivatives,0.827,0.779,0.503,0.0288,3.38,0.582,0.404,0.566,0.480,blocked,0.382,0.700,0.617,8,recent_family_holdout,blocked until risk or crowding improves
+C0076,volume_reversal,price_volume,1.051,1.002,0.526,0.0348,5.15,0.331,0.631,0.493,0.333,ok,0.254,0.741,0.518,6,recent_family_holdout,promising if novelty survives family holdout
+C0077,accrual_quality,fundamental,0.460,0.722,0.425,0.0509,3.52,0.519,0.584,0.552,0.437,watch,0.161,0.800,0.538,5,recent_family_holdout,needs refinement before promotion
+C0078,capital_efficiency,fundamental,1.217,1.190,0.182,0.0692,6.85,0.502,0.486,0.177,0.142,ok,0.166,0.712,0.323,6,recent_family_holdout,promising if novelty survives family holdout
+C0079,earnings_response,news_event,0.574,0.763,0.478,0.0505,3.37,0.472,0.394,0.268,0.537,blocked,0.256,0.744,0.503,6,recent_family_holdout,blocked until risk or crowding improves
+C0080,short_interest_stress,short_interest,0.906,0.992,0.318,0.0399,4.88,0.330,0.350,0.307,0.396,ok,0.166,0.702,0.683,6,recent_family_holdout,promising if novelty survives family holdout
+C0081,quality_revision,fundamental,0.796,0.722,0.368,0.0569,4.14,0.384,0.669,0.504,0.450,ok,0.199,0.807,0.741,9,recent_family_holdout,promising if novelty survives family holdout
+C0082,volume_reversal,price_volume,0.669,0.641,0.663,0.0680,4.00,0.456,0.616,0.377,0.588,ok,0.073,0.811,0.762,8,recent_family_holdout,promising if novelty survives family holdout
+C0083,volume_reversal,price_volume,0.955,0.731,0.572,0.0718,4.81,0.379,0.762,0.457,0.314,ok,0.143,0.852,0.759,9,recent_family_holdout,promising if novelty survives family holdout
+C0084,options_pressure,derivatives,0.768,0.699,0.502,0.0382,4.38,0.155,0.327,0.458,0.210,ok,0.222,0.820,0.755,8,recent_family_holdout,promising if novelty survives family holdout
+C0085,crowded_momentum,price_volume,0.206,0.454,0.391,0.0733,0.93,0.579,0.157,0.553,0.730,blocked,0.347,0.943,0.568,6,recent_family_holdout,blocked until risk or crowding improves
+C0086,short_interest_stress,short_interest,1.042,0.821,0.451,0.0494,5.17,0.158,0.139,0.295,0.284,ok,0.143,0.770,0.557,6,recent_family_holdout,promising if novelty survives family holdout
+C0087,crowded_momentum,price_volume,0.457,0.658,0.675,0.0300,1.68,0.388,0.316,0.050,0.372,blocked,0.329,0.714,0.757,7,recent_family_holdout,blocked until risk or crowding improves
+C0088,options_pressure,derivatives,1.035,1.114,0.177,0.0608,5.71,0.548,0.927,0.308,0.293,ok,0.338,0.683,0.580,7,recent_family_holdout,promising if novelty survives family holdout
+C0089,quality_revision,fundamental,1.303,1.203,0.330,0.0658,5.73,0.363,0.744,0.470,0.196,ok,0.160,0.887,0.340,4,recent_family_holdout,promising if novelty survives family holdout
+C0090,crowded_momentum,price_volume,0.728,0.790,0.376,0.0335,3.96,0.425,0.427,0.419,0.388,ok,0.275,0.773,0.280,4,recent_family_holdout,promising if novelty survives family holdout
+C0091,accrual_quality,fundamental,1.199,1.057,0.226,0.0282,5.77,0.497,0.163,0.217,0.376,ok,0.096,0.711,0.369,4,recent_family_holdout,promising if novelty survives family holdout
+C0092,quality_revision,fundamental,0.814,1.009,0.130,0.0276,4.45,0.516,0.549,0.570,0.530,watch,0.179,0.920,0.293,4,recent_family_holdout,needs refinement before promotion
+C0093,asset_light_reinvestment,fundamental,1.173,0.980,0.356,0.0401,4.89,0.261,0.241,0.297,0.401,ok,0.161,0.705,0.546,6,recent_family_holdout,promising if novelty survives family holdout
+C0094,liquidity_need,price_volume,0.964,0.887,0.241,0.0688,4.51,0.341,0.786,0.387,0.386,watch,0.437,0.806,0.525,7,recent_family_holdout,needs refinement before promotion
+C0095,options_pressure,derivatives,0.749,0.853,0.288,0.0553,3.31,0.276,0.396,0.608,0.560,blocked,0.133,0.890,0.564,7,recent_family_holdout,blocked until risk or crowding improves
+C0096,quality_revision,fundamental,0.887,0.837,0.531,0.0535,4.38,0.214,0.584,0.166,0.136,watch,0.608,0.906,0.669,8,recent_family_holdout,needs refinement before promotion
+C0097,capital_efficiency,fundamental,1.423,1.160,0.310,0.0345,7.45,0.205,0.648,0.121,0.329,ok,0.194,0.942,0.628,7,recent_family_holdout,promising if novelty survives family holdout
+C0098,volume_reversal,price_volume,0.478,0.545,0.666,0.0328,2.68,0.455,0.627,0.316,0.288,blocked,0.236,0.773,0.597,6,recent_family_holdout,blocked until risk or crowding improves
+C0099,earnings_response,news_event,1.447,1.099,0.372,0.0325,6.31,0.338,0.918,0.406,0.178,ok,0.272,0.778,0.389,4,recent_family_holdout,promising if novelty survives family holdout
+C0100,earnings_response,news_event,0.991,1.045,0.130,0.0463,4.80,0.290,0.101,0.355,0.439,ok,0.157,0.905,0.872,9,recent_family_holdout,promising if novelty survives family holdout
+C0101,quality_revision,fundamental,1.293,1.031,0.565,0.0334,4.38,0.196,0.262,0.319,0.193,ok,0.079,0.722,0.468,6,recent_family_holdout,promising if novelty survives family holdout
+C0102,event_pressure,news_event,0.632,0.866,0.255,0.0372,3.62,0.379,0.303,0.309,0.183,ok,0.313,0.957,0.516,8,recent_family_holdout,promising if novelty survives family holdout
+C0103,asset_light_reinvestment,fundamental,0.671,0.859,0.210,0.0484,3.01,0.394,0.532,0.296,0.409,blocked,0.551,0.844,0.369,4,recent_family_holdout,blocked until risk or crowding improves
+C0104,analyst_revision,estimates,1.187,1.097,0.176,0.0530,5.07,0.342,0.106,0.258,0.295,ok,0.159,0.710,0.385,4,recent_family_holdout,promising if novelty survives family holdout
+C0105,short_interest_stress,short_interest,0.550,0.583,0.295,0.0350,2.75,0.524,0.511,0.459,0.528,blocked,0.386,0.828,0.646,8,recent_family_holdout,blocked until risk or crowding improves
+C0106,asset_light_reinvestment,fundamental,0.864,1.001,0.156,0.0525,5.10,0.358,0.624,0.448,0.535,watch,0.511,0.855,0.563,3,recent_family_holdout,needs refinement before promotion
+C0107,liquidity_need,price_volume,1.064,0.924,0.554,0.0738,4.56,0.183,0.585,0.444,0.332,ok,0.131,0.954,0.281,4,recent_family_holdout,promising if novelty survives family holdout
+C0108,liquidity_need,price_volume,0.682,0.759,0.495,0.0327,3.94,0.238,0.531,0.413,0.583,ok,0.129,0.823,0.850,9,recent_family_holdout,promising if novelty survives family holdout
+C0109,accrual_quality,fundamental,1.125,1.054,0.429,0.0319,5.37,0.433,0.580,0.553,0.476,watch,0.173,0.745,0.161,4,recent_family_holdout,needs refinement before promotion
+C0110,options_pressure,derivatives,0.447,0.762,0.182,0.0315,3.95,0.475,0.256,0.185,0.194,ok,0.282,0.873,0.120,4,recent_family_holdout,promising if novelty survives family holdout
+C0111,event_pressure,news_event,1.140,1.145,0.316,0.0505,5.46,0.796,0.309,0.586,0.655,blocked,0.125,0.713,0.276,3,recent_family_holdout,blocked until risk or crowding improves
+C0112,accrual_quality,fundamental,1.042,1.002,0.200,0.0357,5.64,0.311,0.688,0.240,0.251,watch,0.448,0.734,0.804,8,recent_family_holdout,needs refinement before promotion
+C0113,analyst_revision,estimates,0.788,0.736,0.442,0.0268,4.76,0.392,0.543,0.322,0.177,ok,0.248,0.808,0.885,9,recent_family_holdout,promising if novelty survives family holdout
+C0114,short_interest_stress,short_interest,1.157,1.046,0.299,0.0569,5.28,0.367,0.698,0.375,0.373,ok,0.136,0.940,0.612,4,recent_family_holdout,promising if novelty survives family holdout
+C0115,capital_efficiency,fundamental,1.427,1.136,0.546,0.0667,6.28,0.484,0.440,0.613,0.765,watch,0.436,0.894,0.324,5,recent_family_holdout,needs refinement before promotion
+C0116,analyst_revision,estimates,0.815,0.761,0.288,0.0295,4.31,0.577,0.060,0.715,0.671,watch,0.106,0.719,0.408,7,recent_family_holdout,needs refinement before promotion
+C0117,options_pressure,derivatives,1.223,0.908,0.435,0.0341,5.90,0.580,0.426,0.534,0.541,blocked,0.287,0.637,0.844,7,recent_family_holdout,blocked until risk or crowding improves
+C0118,short_interest_stress,short_interest,0.518,0.659,0.430,0.0721,2.72,0.548,0.526,0.650,0.527,blocked,0.360,0.942,0.736,8,recent_family_holdout,blocked until risk or crowding improves
+C0119,asset_light_reinvestment,fundamental,0.422,0.578,0.300,0.0339,2.95,0.520,0.214,0.478,0.445,blocked,0.190,0.925,0.332,2,recent_family_holdout,blocked until risk or crowding improves
+C0120,quality_revision,fundamental,0.884,0.968,0.194,0.0446,5.44,0.510,0.142,0.500,0.562,ok,0.352,0.915,0.628,9,recent_family_holdout,promising if novelty survives family holdout
+C0121,crowded_momentum,price_volume,0.453,0.661,0.598,0.0401,2.05,0.451,0.488,0.219,0.312,blocked,0.447,0.975,0.950,12,recent_family_holdout,blocked until risk or crowding improves
+C0122,accrual_quality,fundamental,0.855,0.883,0.208,0.0665,4.04,0.475,0.170,0.515,0.827,ok,0.114,0.706,0.325,5,recent_family_holdout,promising if novelty survives family holdout
+C0123,capital_efficiency,fundamental,0.959,0.928,0.382,0.0468,4.61,0.468,0.081,0.581,0.645,watch,0.090,0.968,0.613,8,recent_family_holdout,needs refinement before promotion
+C0124,analyst_revision,estimates,0.956,0.813,0.477,0.0304,5.60,0.528,0.135,0.533,0.772,ok,0.210,0.854,0.702,9,recent_family_holdout,promising if novelty survives family holdout
+C0125,quality_revision,fundamental,0.751,0.827,0.569,0.0304,3.10,0.491,0.248,0.543,0.523,blocked,0.698,0.876,0.252,4,recent_family_holdout,blocked until risk or crowding improves
+C0126,quality_revision,fundamental,0.735,0.906,0.256,0.0318,3.75,0.451,0.175,0.544,0.351,ok,0.152,0.930,0.769,10,recent_family_holdout,promising if novelty survives family holdout
+C0127,quality_revision,fundamental,0.752,0.686,0.513,0.0421,4.23,0.339,0.202,0.523,0.396,ok,0.093,0.936,0.496,4,recent_family_holdout,promising if novelty survives family holdout
+C0128,analyst_revision,estimates,0.812,0.801,0.427,0.0734,3.71,0.455,0.158,0.501,0.630,ok,0.209,0.768,0.592,6,recent_family_holdout,promising if novelty survives family holdout
+C0129,volume_reversal,price_volume,0.562,0.590,0.559,0.0618,3.53,0.254,0.779,0.308,0.176,watch,0.390,0.982,0.739,8,recent_family_holdout,needs refinement before promotion
+C0130,asset_light_reinvestment,fundamental,1.148,1.005,0.496,0.0349,5.41,0.275,0.190,0.479,0.231,ok,0.077,0.836,0.368,3,recent_family_holdout,promising if novelty survives family holdout
+C0131,earnings_response,news_event,0.756,0.782,0.296,0.0263,4.89,0.475,0.113,0.473,0.685,ok,0.196,0.733,0.451,5,recent_family_holdout,promising if novelty survives family holdout
+C0132,asset_light_reinvestment,fundamental,1.217,1.100,0.491,0.0525,4.86,0.589,0.816,0.092,0.236,watch,0.518,0.836,0.436,6,recent_family_holdout,needs refinement before promotion
+C0133,short_interest_stress,short_interest,1.066,1.017,0.161,0.0448,5.93,0.130,0.695,0.180,0.353,ok,0.097,0.749,0.496,7,recent_family_holdout,promising if novelty survives family holdout
+C0134,crowded_momentum,price_volume,1.322,1.142,0.428,0.0617,5.39,0.249,0.257,0.350,0.339,ok,0.229,0.820,0.434,5,recent_family_holdout,promising if novelty survives family holdout
+C0135,quality_revision,fundamental,0.767,0.820,0.126,0.0488,4.82,0.215,0.615,0.396,0.152,ok,0.261,0.962,0.691,6,recent_family_holdout,promising if novelty survives family holdout
+C0136,options_pressure,derivatives,0.752,0.701,0.475,0.0460,3.49,0.388,0.508,0.490,0.414,blocked,0.417,0.690,0.308,4,recent_family_holdout,blocked until risk or crowding improves
+C0137,volume_reversal,price_volume,0.567,0.678,0.387,0.0312,3.11,0.370,0.125,0.388,0.624,blocked,0.343,0.860,0.751,9,recent_family_holdout,blocked until risk or crowding improves
+C0138,analyst_revision,estimates,1.220,1.173,0.358,0.0308,4.61,0.347,0.434,0.196,0.146,ok,0.300,0.767,0.662,7,recent_family_holdout,promising if novelty survives family holdout
+C0139,liquidity_need,price_volume,1.136,0.987,0.639,0.0623,5.09,0.524,0.593,0.641,0.799,watch,0.397,0.764,0.444,5,recent_family_holdout,needs refinement before promotion
+C0140,options_pressure,derivatives,1.137,1.083,0.141,0.0378,4.21,0.351,0.789,0.627,0.330,blocked,0.319,0.626,0.732,9,recent_family_holdout,blocked until risk or crowding improves
+C0141,options_pressure,derivatives,1.087,1.018,0.361,0.0632,5.11,0.238,0.434,0.353,0.412,blocked,0.216,0.668,0.401,4,recent_family_holdout,blocked until risk or crowding improves
+C0142,crowded_momentum,price_volume,0.933,0.921,0.351,0.0346,4.79,0.387,0.698,0.523,0.705,ok,0.153,0.882,0.841,9,recent_family_holdout,promising if novelty survives family holdout
+C0143,asset_light_reinvestment,fundamental,0.787,0.925,0.566,0.0286,3.42,0.496,0.569,0.728,0.831,blocked,0.384,0.864,0.571,7,recent_family_holdout,blocked until risk or crowding improves
+C0144,volume_reversal,price_volume,0.744,0.695,0.263,0.0485,3.97,0.274,0.588,0.386,0.470,ok,0.143,0.735,0.568,8,recent_family_holdout,promising if novelty survives family holdout
+C0145,capital_efficiency,fundamental,0.618,0.736,0.533,0.0587,2.56,0.437,0.447,0.437,0.419,blocked,0.488,0.765,0.642,8,recent_family_holdout,blocked until risk or crowding improves
+C0146,short_interest_stress,short_interest,0.917,0.850,0.479,0.0506,5.60,0.200,0.513,0.309,0.212,ok,0.046,0.709,0.653,5,recent_family_holdout,promising if novelty survives family holdout
+C0147,crowded_momentum,price_volume,0.858,0.879,0.520,0.0564,3.54,0.319,0.753,0.346,0.300,watch,0.586,0.852,0.169,2,recent_family_holdout,needs refinement before promotion
+C0148,quality_revision,fundamental,0.995,0.999,0.228,0.0440,4.47,0.246,0.625,0.130,0.084,watch,0.420,0.958,0.407,6,recent_family_holdout,needs refinement before promotion
+C0149,asset_light_reinvestment,fundamental,0.742,0.780,0.352,0.0609,4.22,0.327,0.544,0.345,0.175,watch,0.521,0.736,0.204,3,recent_family_holdout,needs refinement before promotion
+C0150,volume_reversal,price_volume,0.656,0.588,0.663,0.0740,2.75,0.303,0.597,0.490,0.629,blocked,0.528,0.815,0.416,6,recent_family_holdout,blocked until risk or crowding improves
+C0151,quality_revision,fundamental,0.754,0.668,0.531,0.0455,4.38,0.488,0.598,0.320,0.344,ok,0.332,0.830,0.411,5,recent_family_holdout,promising if novelty survives family holdout
+C0152,event_pressure,news_event,1.322,1.114,0.462,0.0484,5.54,0.283,0.378,0.166,0.080,ok,0.239,0.788,0.742,6,recent_family_holdout,promising if novelty survives family holdout
+C0153,analyst_revision,estimates,0.950,0.935,0.156,0.0542,5.70,0.418,0.540,0.285,0.243,ok,0.175,0.752,0.632,8,recent_family_holdout,promising if novelty survives family holdout
+C0154,earnings_response,news_event,0.622,0.799,0.178,0.0305,3.63,0.511,0.451,0.326,0.398,ok,0.276,0.778,0.700,9,recent_family_holdout,promising if novelty survives family holdout
+C0155,short_interest_stress,short_interest,0.652,0.817,0.162,0.0506,2.58,0.346,0.427,0.358,0.235,blocked,0.595,0.983,0.709,6,recent_family_holdout,blocked until risk or crowding improves
+C0156,asset_light_reinvestment,fundamental,0.787,0.888,0.331,0.0695,4.09,0.502,0.703,0.278,0.270,watch,0.471,0.729,0.864,10,recent_family_holdout,needs refinement before promotion
+C0157,options_pressure,derivatives,0.826,0.782,0.513,0.0566,4.32,0.505,0.337,0.547,0.813,ok,0.201,0.730,0.283,5,recent_family_holdout,promising if novelty survives family holdout
+C0158,options_pressure,derivatives,0.370,0.695,0.276,0.0281,1.73,0.353,0.099,0.353,0.491,blocked,0.296,0.760,0.243,4,recent_family_holdout,blocked until risk or crowding improves
+C0159,short_interest_stress,short_interest,0.977,0.985,0.298,0.0682,4.33,0.485,0.754,0.410,0.291,ok,0.170,0.741,0.354,4,recent_family_holdout,promising if novelty survives family holdout
+C0160,liquidity_need,price_volume,0.840,0.948,0.576,0.0344,5.04,0.255,0.494,0.211,0.192,ok,0.256,0.900,0.529,7,recent_family_holdout,promising if novelty survives family holdout
+C0161,event_pressure,news_event,0.506,0.711,0.463,0.0744,2.53,0.388,0.245,0.283,0.271,blocked,0.326,0.953,0.158,3,recent_family_holdout,blocked until risk or crowding improves
+C0162,asset_light_reinvestment,fundamental,1.399,1.204,0.238,0.0664,5.94,0.280,0.546,0.422,0.259,ok,0.217,0.770,0.124,2,recent_family_holdout,promising if novelty survives family holdout
+C0163,analyst_revision,estimates,0.689,0.726,0.307,0.0383,3.41,0.287,0.287,0.342,0.487,blocked,0.172,0.863,0.833,8,recent_family_holdout,blocked until risk or crowding improves
+C0164,crowded_momentum,price_volume,0.412,0.589,0.516,0.0645,3.03,0.219,0.296,0.564,0.412,blocked,0.295,0.715,0.376,6,recent_family_holdout,blocked until risk or crowding improves
+C0165,capital_efficiency,fundamental,1.223,1.036,0.404,0.0352,6.30,0.604,0.178,0.532,0.782,watch,0.282,0.936,0.821,9,recent_family_holdout,needs refinement before promotion
+C0166,asset_light_reinvestment,fundamental,1.015,0.892,0.563,0.0449,4.86,0.585,0.060,0.544,0.810,ok,0.088,0.902,0.568,7,recent_family_holdout,promising if novelty survives family holdout
+C0167,short_interest_stress,short_interest,0.919,0.857,0.474,0.0282,4.42,0.507,0.579,0.126,0.280,ok,0.210,0.759,0.796,8,recent_family_holdout,promising if novelty survives family holdout
+C0168,volume_reversal,price_volume,0.382,0.656,0.447,0.0748,2.59,0.202,0.357,0.124,0.080,blocked,0.335,0.774,0.594,7,recent_family_holdout,blocked until risk or crowding improves
+C0169,volume_reversal,price_volume,0.940,0.901,0.288,0.0303,5.32,0.554,0.185,0.609,0.585,watch,0.246,0.831,0.695,6,recent_family_holdout,needs refinement before promotion
+C0170,analyst_revision,estimates,0.774,0.806,0.296,0.0408,2.77,0.155,0.584,0.297,0.185,blocked,0.431,0.948,0.677,7,recent_family_holdout,blocked until risk or crowding improves
+C0171,accrual_quality,fundamental,1.068,0.931,0.359,0.0744,5.15,0.221,0.515,0.272,0.157,watch,0.419,0.766,0.470,5,recent_family_holdout,needs refinement before promotion
+C0172,accrual_quality,fundamental,0.864,0.909,0.365,0.0540,5.17,0.511,0.404,0.420,0.591,ok,0.156,0.877,0.708,8,recent_family_holdout,promising if novelty survives family holdout
+C0173,capital_efficiency,fundamental,0.653,0.877,0.176,0.0309,3.45,0.504,0.343,0.358,0.492,blocked,0.195,0.845,0.272,3,recent_family_holdout,blocked until risk or crowding improves
+C0174,quality_revision,fundamental,1.321,1.163,0.506,0.0382,6.37,0.521,0.463,0.359,0.371,ok,0.332,0.948,0.283,4,recent_family_holdout,promising if novelty survives family holdout
+C0175,crowded_momentum,price_volume,0.851,0.942,0.401,0.0575,4.51,0.670,0.110,0.702,0.940,watch,0.443,0.853,0.313,3,recent_family_holdout,needs refinement before promotion
+C0176,quality_revision,fundamental,1.004,0.982,0.129,0.0578,4.76,0.307,0.678,0.202,0.154,watch,0.408,0.794,0.373,5,recent_family_holdout,needs refinement before promotion
+C0177,asset_light_reinvestment,fundamental,0.919,1.017,0.197,0.0267,4.89,0.246,0.330,0.294,0.082,ok,0.219,0.849,0.407,6,recent_family_holdout,promising if novelty survives family holdout
+C0178,crowded_momentum,price_volume,1.022,0.876,0.465,0.0735,3.92,0.478,0.432,0.373,0.572,watch,0.420,0.969,0.573,6,recent_family_holdout,needs refinement before promotion
+C0179,asset_light_reinvestment,fundamental,0.902,0.996,0.149,0.0536,4.55,0.500,0.243,0.526,0.501,ok,0.115,0.766,0.392,4,recent_family_holdout,promising if novelty survives family holdout
+C0180,asset_light_reinvestment,fundamental,0.864,0.982,0.276,0.0255,5.18,0.310,0.412,0.364,0.228,ok,0.238,0.869,0.542,7,recent_family_holdout,promising if novelty survives family holdout
+C0181,options_pressure,derivatives,0.797,0.749,0.481,0.0423,4.33,0.232,0.492,0.241,0.352,watch,0.531,0.688,0.418,7,recent_family_holdout,needs refinement before promotion
+C0182,volume_reversal,price_volume,1.093,1.176,0.365,0.0546,5.28,0.229,0.720,0.182,0.080,ok,0.216,0.859,0.147,4,recent_family_holdout,promising if novelty survives family holdout
+C0183,event_pressure,news_event,0.689,0.837,0.249,0.0320,4.37,0.626,0.569,0.610,0.600,watch,0.280,0.931,0.300,4,recent_family_holdout,needs refinement before promotion
+C0184,asset_light_reinvestment,fundamental,1.686,1.367,0.183,0.0474,8.18,0.415,0.361,0.466,0.510,ok,0.100,0.875,0.684,8,recent_family_holdout,promising if novelty survives family holdout
+C0185,short_interest_stress,short_interest,1.143,0.966,0.458,0.0513,5.11,0.284,0.551,0.290,0.335,ok,0.157,0.888,0.283,4,recent_family_holdout,promising if novelty survives family holdout
+C0186,accrual_quality,fundamental,0.927,0.889,0.478,0.0561,3.46,0.200,0.505,0.212,0.251,blocked,0.388,0.769,0.628,8,recent_family_holdout,blocked until risk or crowding improves
+C0187,analyst_revision,estimates,1.010,0.891,0.349,0.0337,4.72,0.325,0.463,0.131,0.119,ok,0.048,0.789,0.683,8,recent_family_holdout,promising if novelty survives family holdout
+C0188,crowded_momentum,price_volume,1.058,0.893,0.256,0.0684,4.71,0.484,0.273,0.471,0.668,ok,0.128,0.941,0.407,5,recent_family_holdout,promising if novelty survives family holdout
+C0189,event_pressure,news_event,1.293,0.953,0.181,0.0678,6.48,0.478,0.615,0.341,0.441,ok,0.199,0.979,0.528,5,recent_family_holdout,promising if novelty survives family holdout
+C0190,quality_revision,fundamental,1.008,0.963,0.267,0.0474,4.89,0.602,0.641,0.331,0.491,watch,0.270,0.714,0.489,6,recent_family_holdout,needs refinement before promotion
+C0191,options_pressure,derivatives,0.617,0.760,0.409,0.0421,2.20,0.355,0.386,0.602,0.629,blocked,0.425,0.868,0.485,7,recent_family_holdout,blocked until risk or crowding improves
+C0192,quality_revision,fundamental,1.056,0.962,0.402,0.0728,5.03,0.286,0.503,0.268,0.080,ok,0.278,0.955,0.552,7,recent_family_holdout,promising if novelty survives family holdout
+C0193,quality_revision,fundamental,0.986,0.849,0.249,0.0558,5.67,0.454,0.584,0.369,0.249,ok,0.020,0.844,0.562,4,recent_family_holdout,promising if novelty survives family holdout
+C0194,liquidity_need,price_volume,0.227,0.462,0.555,0.0341,1.77,0.383,0.692,0.494,0.341,blocked,0.377,0.727,0.628,7,recent_family_holdout,blocked until risk or crowding improves
+C0195,earnings_response,news_event,0.266,0.462,0.571,0.0715,1.89,0.510,0.604,0.440,0.665,blocked,0.164,0.760,0.528,5,recent_family_holdout,blocked until risk or crowding improves
+C0196,volume_reversal,price_volume,1.001,0.893,0.623,0.0524,3.62,0.364,0.600,0.470,0.528,ok,0.241,0.979,0.287,5,recent_family_holdout,promising if novelty survives family holdout
+C0197,analyst_revision,estimates,0.987,0.817,0.547,0.0521,4.70,0.232,0.641,0.080,0.086,ok,0.167,0.884,0.558,6,recent_family_holdout,promising if novelty survives family holdout
+C0198,liquidity_need,price_volume,0.766,0.879,0.631,0.0525,3.60,0.301,0.419,0.315,0.168,watch,0.425,0.931,0.433,6,recent_family_holdout,needs refinement before promotion
+C0199,accrual_quality,fundamental,0.715,0.833,0.542,0.0667,3.87,0.443,0.188,0.187,0.192,ok,0.129,0.935,0.425,3,recent_family_holdout,promising if novelty survives family holdout
+C0200,event_pressure,news_event,0.586,0.765,0.345,0.0397,3.77,0.359,0.802,0.340,0.094,ok,0.229,0.800,0.668,8,recent_family_holdout,promising if novelty survives family holdout
+C0201,short_interest_stress,short_interest,1.228,1.106,0.232,0.0510,5.47,0.633,0.630,0.516,0.621,watch,0.381,0.975,0.185,2,recent_family_holdout,needs refinement before promotion
+C0202,short_interest_stress,short_interest,1.170,1.116,0.365,0.0661,5.78,0.398,0.725,0.397,0.371,ok,0.204,0.865,0.593,7,recent_family_holdout,promising if novelty survives family holdout
+C0203,liquidity_need,price_volume,0.467,0.433,0.602,0.0576,2.28,0.138,0.564,0.227,0.159,blocked,0.255,0.815,0.558,7,recent_family_holdout,blocked until risk or crowding improves
+C0204,quality_revision,fundamental,1.304,0.882,0.225,0.0739,6.54,0.477,0.680,0.490,0.525,ok,0.213,0.807,0.724,10,recent_family_holdout,promising if novelty survives family holdout
+C0205,event_pressure,news_event,1.413,1.203,0.139,0.0342,6.33,0.613,0.454,0.296,0.422,watch,0.196,0.970,0.533,6,recent_family_holdout,needs refinement before promotion
+C0206,asset_light_reinvestment,fundamental,1.130,0.965,0.465,0.0267,3.63,0.175,0.498,0.275,0.201,watch,0.490,0.762,0.772,8,recent_family_holdout,needs refinement before promotion
+C0207,quality_revision,fundamental,1.280,1.045,0.440,0.0598,5.10,0.115,0.932,0.050,0.080,ok,0.356,0.989,0.302,4,recent_family_holdout,promising if novelty survives family holdout
+C0208,earnings_response,news_event,0.979,0.917,0.381,0.0333,5.49,0.257,0.320,0.169,0.285,ok,0.120,0.971,0.404,4,recent_family_holdout,promising if novelty survives family holdout
+C0209,volume_reversal,price_volume,1.069,0.923,0.357,0.0474,4.60,0.382,0.707,0.391,0.232,watch,0.643,0.912,0.911,10,recent_family_holdout,needs refinement before promotion
+C0210,capital_efficiency,fundamental,1.363,1.128,0.206,0.0743,7.05,0.357,0.170,0.426,0.438,ok,0.239,0.990,0.389,4,recent_family_holdout,promising if novelty survives family holdout
+C0211,accrual_quality,fundamental,0.696,0.793,0.272,0.0492,2.91,0.470,0.521,0.733,0.724,blocked,0.720,0.751,0.608,5,recent_family_holdout,blocked until risk or crowding improves
+C0212,asset_light_reinvestment,fundamental,0.991,1.044,0.319,0.0709,5.36,0.569,0.498,0.605,0.615,watch,0.181,0.925,0.651,7,recent_family_holdout,needs refinement before promotion
+C0213,asset_light_reinvestment,fundamental,0.768,0.936,0.277,0.0351,4.18,0.331,0.360,0.427,0.356,ok,0.201,0.854,0.309,3,recent_family_holdout,promising if novelty survives family holdout
+C0214,liquidity_need,price_volume,0.597,0.501,0.594,0.0555,2.76,0.363,0.318,0.243,0.406,blocked,0.196,0.833,0.937,8,recent_family_holdout,blocked until risk or crowding improves
+C0215,liquidity_need,price_volume,0.360,0.546,0.535,0.0700,2.95,0.439,0.166,0.224,0.444,blocked,0.147,0.738,0.783,8,recent_family_holdout,blocked until risk or crowding improves
+C0216,liquidity_need,price_volume,0.558,0.695,0.657,0.0480,3.48,0.333,0.586,0.344,0.294,blocked,0.331,0.748,0.511,7,recent_family_holdout,blocked until risk or crowding improves
+C0217,earnings_response,news_event,0.681,0.755,0.217,0.0585,3.27,0.404,0.677,0.238,0.454,blocked,0.549,0.885,0.516,5,recent_family_holdout,blocked until risk or crowding improves
+C0218,earnings_response,news_event,0.870,1.065,0.266,0.0405,4.11,0.261,0.141,0.436,0.350,ok,0.141,0.786,0.291,4,recent_family_holdout,promising if novelty survives family holdout
+C0219,short_interest_stress,short_interest,0.374,0.556,0.501,0.0544,1.78,0.178,0.272,0.187,0.080,blocked,0.232,0.758,0.120,3,recent_family_holdout,blocked until risk or crowding improves
+C0220,options_pressure,derivatives,1.183,1.213,0.291,0.0271,6.04,0.379,0.434,0.355,0.191,ok,0.113,0.759,0.396,6,recent_family_holdout,promising if novelty survives family holdout
+C0221,capital_efficiency,fundamental,1.218,1.140,0.456,0.0609,5.90,0.564,0.304,0.486,0.417,ok,0.020,0.891,0.253,3,recent_family_holdout,promising if novelty survives family holdout
+C0222,liquidity_need,price_volume,1.008,0.948,0.404,0.0529,4.36,0.272,0.960,0.408,0.236,watch,0.395,0.837,0.690,7,recent_family_holdout,needs refinement before promotion
+C0223,quality_revision,fundamental,1.421,1.185,0.404,0.0414,7.86,0.381,0.282,0.487,0.492,ok,0.280,0.980,0.533,5,recent_family_holdout,promising if novelty survives family holdout
+C0224,capital_efficiency,fundamental,1.270,1.292,0.333,0.0482,6.06,0.309,0.734,0.304,0.175,watch,0.471,0.978,0.423,6,recent_family_holdout,needs refinement before promotion
+C0225,earnings_response,news_event,0.877,0.778,0.542,0.0314,4.73,0.368,0.774,0.269,0.368,ok,0.096,0.812,0.411,5,recent_family_holdout,promising if novelty survives family holdout
+C0226,quality_revision,fundamental,0.777,0.624,0.547,0.0499,3.29,0.317,0.469,0.357,0.238,blocked,0.185,0.847,0.205,4,recent_family_holdout,blocked until risk or crowding improves
+C0227,quality_revision,fundamental,1.260,1.159,0.405,0.0562,4.61,0.124,0.464,0.376,0.080,watch,0.655,0.928,0.637,6,recent_family_holdout,needs refinement before promotion
+C0228,capital_efficiency,fundamental,1.111,1.031,0.409,0.0423,4.83,0.283,0.843,0.137,0.123,ok,0.118,0.850,0.714,8,recent_family_holdout,promising if novelty survives family holdout
+C0229,volume_reversal,price_volume,0.644,0.707,0.502,0.0737,2.97,0.252,0.229,0.198,0.282,blocked,0.429,0.767,0.860,8,recent_family_holdout,blocked until risk or crowding improves
+C0230,quality_revision,fundamental,0.812,0.739,0.363,0.0550,4.19,0.444,0.293,0.500,0.383,ok,0.128,0.861,0.475,6,recent_family_holdout,promising if novelty survives family holdout
+C0231,analyst_revision,estimates,0.532,0.536,0.551,0.0698,2.01,0.489,0.452,0.385,0.654,blocked,0.252,0.901,0.845,8,recent_family_holdout,blocked until risk or crowding improves
+C0232,capital_efficiency,fundamental,1.134,1.003,0.270,0.0414,5.03,0.304,0.252,0.328,0.479,ok,0.145,0.786,0.807,9,recent_family_holdout,promising if novelty survives family holdout
+C0233,earnings_response,news_event,0.732,0.796,0.568,0.0458,1.96,0.356,0.496,0.409,0.569,blocked,0.494,0.959,0.549,6,recent_family_holdout,blocked until risk or crowding improves
+C0234,options_pressure,derivatives,1.050,1.134,0.418,0.0385,5.12,0.565,0.702,0.474,0.310,ok,0.342,0.703,0.327,4,recent_family_holdout,promising if novelty survives family holdout
+C0235,earnings_response,news_event,1.106,1.012,0.211,0.0318,5.48,0.317,0.248,0.310,0.260,ok,0.260,0.960,0.661,8,recent_family_holdout,promising if novelty survives family holdout
+C0236,asset_light_reinvestment,fundamental,1.348,1.272,0.146,0.0357,6.02,0.097,0.307,0.420,0.231,ok,0.138,0.757,0.387,7,recent_family_holdout,promising if novelty survives family holdout
+C0237,volume_reversal,price_volume,0.734,0.820,0.404,0.0254,3.22,0.390,0.357,0.335,0.428,blocked,0.451,0.899,0.120,2,recent_family_holdout,blocked until risk or crowding improves
+C0238,earnings_response,news_event,0.770,0.868,0.229,0.0458,4.68,0.237,0.864,0.291,0.264,ok,0.032,0.746,0.432,6,recent_family_holdout,promising if novelty survives family holdout
+C0239,asset_light_reinvestment,fundamental,0.655,0.718,0.457,0.0274,2.98,0.421,0.231,0.652,0.524,blocked,0.377,0.775,0.356,5,recent_family_holdout,blocked until risk or crowding improves
+C0240,earnings_response,news_event,0.358,0.541,0.468,0.0333,3.31,0.543,0.258,0.455,0.298,blocked,0.203,0.763,0.486,5,recent_family_holdout,blocked until risk or crowding improves

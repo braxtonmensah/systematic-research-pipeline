@@ -16,6 +16,10 @@ Each candidate is represented by observable research metrics:
 - `active_similarity`
 - `family_saturation`
 - `live_status`
+- `oos_decay`
+- `coverage`
+- `complexity`
+- `operator_count`
 
 The scoring script treats these as evidence, not as a guarantee. A candidate can have a high score and still be blocked by a hard gate.
 
@@ -28,6 +32,8 @@ The workflow rejects candidates that fail basic practical tests:
 - Self-correlation that is too high relative to existing work.
 - Low margin or poor live feasibility.
 - Crowded formula families that are unlikely to add portfolio value.
+- High out-of-sample decay.
+- High complexity without enough demonstrated edge.
 
 ## 3. Novelty Discipline
 
@@ -53,5 +59,9 @@ The scripts produce a short memo instead of a black-box score. The memo explains
 - Which candidates were blocked.
 - Which families are overused.
 - What should be reviewed next.
+
+## Why This Is Public-Safe
+
+The sample data is synthetic and the workflow is generic. It demonstrates research process, validation discipline, and automation design without publishing private formulas or live platform operations.
 
 The intended user is a human researcher or AI assistant deciding what to inspect next.
