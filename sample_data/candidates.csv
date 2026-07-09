@@ -1,0 +1,13 @@
+candidate_id,formula_family,data_theme,sharpe,fitness,turnover,drawdown,margin_bps,self_correlation,novelty,active_similarity,family_saturation,live_status
+F001,quality_revision,fundamental,1.42,1.21,0.19,0.036,6.8,0.41,0.74,0.28,0.32,ok
+F002,quality_revision,fundamental,1.08,0.88,0.28,0.049,4.9,0.67,0.51,0.43,0.55,watch
+F003,volume_reversal,price_volume,1.31,1.02,0.34,0.057,5.4,0.58,0.62,0.39,0.49,ok
+F004,volume_reversal,price_volume,0.82,0.63,0.41,0.074,3.2,0.74,0.46,0.61,0.70,blocked
+F005,event_pressure,news_event,1.18,1.00,0.22,0.044,5.8,0.35,0.81,0.24,0.27,ok
+F006,event_pressure,news_event,0.96,0.72,0.37,0.061,4.1,0.52,0.66,0.35,0.44,watch
+F007,accrual_quality,fundamental,1.36,1.17,0.17,0.039,7.2,0.48,0.69,0.31,0.36,ok
+F008,accrual_quality,fundamental,0.71,0.55,0.45,0.082,2.9,0.63,0.58,0.57,0.58,blocked
+F009,options_pressure,derivatives,1.24,1.04,0.25,0.052,5.6,0.44,0.77,0.29,0.30,ok
+F010,options_pressure,derivatives,1.01,0.86,0.31,0.055,4.7,0.59,0.60,0.42,0.47,watch
+F011,capital_efficiency,fundamental,1.51,1.29,0.21,0.041,7.5,0.39,0.73,0.26,0.34,ok
+F012,capital_efficiency,fundamental,0.91,0.70,0.38,0.069,3.8,0.71,0.49,0.64,0.68,blocked

@@ -1,0 +1,13 @@
+candidate_id,formula_family,data_theme,score,decision,gate_reasons,sharpe,fitness,self_correlation,novelty,margin_bps
+F011,capital_efficiency,fundamental,1.1949,review,pass,1.51,1.29,0.39,0.73,7.5
+F001,quality_revision,fundamental,1.0923,review,pass,1.42,1.21,0.41,0.74,6.8
+F007,accrual_quality,fundamental,1.0176,review,pass,1.36,1.17,0.48,0.69,7.2
+F005,event_pressure,news_event,0.9537,review,pass,1.18,1.00,0.35,0.81,5.8
+F009,options_pressure,derivatives,0.8540,review,pass,1.24,1.04,0.44,0.77,5.6
+F003,volume_reversal,price_volume,0.5820,review,pass,1.31,1.02,0.58,0.62,5.4
+F010,options_pressure,derivatives,0.0295,review,pass,1.01,0.86,0.59,0.60,4.7
+F006,event_pressure,news_event,0.0010,review,pass,0.96,0.72,0.52,0.66,4.1
+F002,quality_revision,fundamental,-0.0167,review,self_correlation_watch,1.08,0.88,0.67,0.51,4.9
+F012,capital_efficiency,fundamental,-0.0645,blocked,live_status_blocked;thin_margin;self_correlation_block;too_close_to_active_book,0.91,0.70,0.71,0.49,3.8
+F008,accrual_quality,fundamental,-0.1425,blocked,live_status_blocked;weak_sharpe;weak_fitness;thin_margin;drawdown_risk;self_correlation_watch,0.71,0.55,0.63,0.58,2.9
+F004,volume_reversal,price_volume,-0.1992,blocked,live_status_blocked;weak_sharpe;weak_fitness;thin_margin;self_correlation_block;too_close_to_active_book,0.82,0.63,0.74,0.46,3.2
