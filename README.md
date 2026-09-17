@@ -1,5 +1,9 @@
 # AI-Assisted Systematic Research Factory
 
+[![Tests](https://github.com/braxtonmensah/systematic-research-factory/actions/workflows/tests.yml/badge.svg)](https://github.com/braxtonmensah/systematic-research-factory/actions/workflows/tests.yml)
+
+**Software status:** the automated test suite checks the complete sample workflow on every push. Documented rejections and limitations are research findings, not unresolved runtime errors.
+
 This is a public-safe case study of how I structure systematic research: generate candidates, reject weak ones early, control self-correlation, validate without leakage, and turn the result into a reviewable research memo.
 
 I built it after noticing that a long candidate list can create false confidence. Many "different" signals are only small variations of the same formula family. This project treats rejection as a useful result and tests whether a ranking still works when an entire family is held out.
