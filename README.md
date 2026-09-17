@@ -1,6 +1,8 @@
 # AI-Assisted Systematic Research Factory
 
-Public-safe case study of how I structure systematic research: generate candidates, reject weak ones early, control self-correlation, validate without leakage, and turn the result into a reviewable research memo.
+This is a public-safe case study of how I structure systematic research: generate candidates, reject weak ones early, control self-correlation, validate without leakage, and turn the result into a reviewable research memo.
+
+I built it after noticing that a long candidate list can create false confidence. Many "different" signals are only small variations of the same formula family. This project treats rejection as a useful result and tests whether a ranking still works when an entire family is held out.
 
 This repo is adapted from my personal research workflow as a WorldQuant Research Consultant. It is intentionally sanitized: no proprietary formulas, credentials, platform endpoints, live submission scripts, private datasets, or internal state. The point is to show process quality, not expose private alpha work.
 
@@ -13,6 +15,8 @@ The sample pipeline builds a synthetic candidate book and produces:
 - `reports/fold_metrics.csv` - fold-level validation metrics.
 - `reports/action_mix.svg` - action mix chart.
 - `reports/research_memo.md` - final decision memo for human review.
+
+In the included deterministic run, random-id validation produced `0.580` precision@10, while formula-family holdout produced `0.520`. The six-point gap is the warning: a random split made the ranker look better because related formulas appeared on both sides of the split.
 
 ## What This Demonstrates
 
@@ -68,6 +72,13 @@ python -m src.generate_report --ranked reports/ranked_candidates.csv --validatio
 In systematic research, the hard part is not producing many ideas. The hard part is refusing weak ideas early, avoiding duplicate/crowded signals, and keeping a record of why a candidate deserved more work.
 
 That same operating loop transfers to investment workflows: sourcing lists, market maps, diligence screens, KPI tracking, and memo prep all benefit from clear gates, validation, and reviewable outputs.
+
+## Limits
+
+- The candidate data is synthetic, so this is evidence about research process rather than evidence of a tradable strategy.
+- The scoring weights and gate thresholds are illustrative; they are not calibrated to live returns.
+- Precision@10 measures agreement with the case-study labels, not economic value.
+- A real deployment would need time-indexed out-of-sample tests, transaction costs, capacity checks, and independent review before capital is involved.
 
 ## Tests
 
